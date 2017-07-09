@@ -1,8 +1,8 @@
 Languagetool API wrapper in Golang
 
-Wrapper for opensource text proofreading api provided by <a href="www.languagetool.org">Languagetool.org</a> 
+Wrapper for opensource text proofreading api provided by <a href="https://www.languagetool.org">Languagetool.org</a> 
 
-Link to api documentation <a href="www.languagetool.org/http-api/swagger-ui/#/">here.</a>
+Link to api documentation <a href="https://www.languagetool.org/http-api/swagger-ui/#/">here.</a>
 Note: Api has limit of 20 calls per minute per IP.
 
 Example usage:
