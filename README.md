@@ -5,6 +5,9 @@ Wrapper for opensource text proofreading api provided by <a href="https://www.la
 Link to api documentation <a href="https://www.languagetool.org/http-api/swagger-ui/#/">here.</a>
 Note: Api has limit of 20 calls per minute per IP.
 
+Install:<br>
+go get github.com/bas24/languagetool
+
 Example usage:
 
 ```go
