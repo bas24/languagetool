@@ -4,66 +4,58 @@ const (
 	URL string = `https://languagetool.org/api/v2/check`
 )
 
-type Soft struct {
+type Warnings struct {
+	IncompleteResults bool `json:"incompleteResults"`
+}
+
+type Software struct {
 	Name       string `json:"name"`
 	Version    string `json:"version"`
 	BuildDate  string `json:"buildDate"`
-	ApiVersion int    `json:"apiVersion"`
+	APIVersion int    `json:"apiVersion"`
 	Status     string `json:"status"`
 }
 
-type Lang struct {
-	Name string `json:"name`
+type Language struct {
+	Name string `json:"name"`
 	Code string `json:"code"`
+}
+
+type Result struct {
+	Software Software `json:"software"`
+	Warnings Warnings `json:"warnings"`
+	Language Language `json:"language"`
+	Matches  []Match  `json:"matches"`
+}
+
+type Match struct {
+	Message      string        `json:"message"`
+	ShortMessage string        `json:"shortMessage"`
+	Replacements []Replacement `json:"replacements"`
+	Offset       int           `json:"offset"`
+	Length       int           `json:"length"`
+	Context      Context       `json:"context"`
+	Rule         Rule          `json:"rule"`
 }
 
 type Replacement struct {
 	Value string `json:"value"`
 }
 
-type ContextVal struct {
+type Context struct {
 	Text   string `json:"text"`
 	Offset int    `json:"offset"`
 	Length int    `json:"length"`
 }
 
-type RuleUrls struct {
-	Value string `json:"value"`
+type Rule struct {
+	ID          string   `json:"id"`
+	Description string   `json:"description"`
+	IssueType   string   `json:"issueType"`
+	Category    Category `json:"category"`
 }
 
-type RuleCategory struct {
-	Id   string `json:"id"`
+type Category struct {
+	ID   string `json:"id"`
 	Name string `json:"name"`
-}
-
-type RuleVal struct {
-	Id          string       `json:"id"`
-	SubId       string       `json:"subId"`
-	Description string       `json:"description"`
-	Urls        RuleUrls     `json:"urls"`
-	IssueType   string       `json:"issueType"`
-	Category    RuleCategory `json:"category"`
-}
-
-type Match struct {
-	Message      string        `json:"message"`
-	ShortMessage string        `json:"shortMessage"`
-	Offset       int           `json:"offset"`
-	Length       int           `json:"length"`
-	Replacements []Replacement `json:"replacements"`
-	Context      ContextVal    `json:"context"`
-	Rule         RuleVal       `json:"rule"`
-}
-
-type Result struct {
-	Software Soft    `json:"software"`
-	Language Lang    `json:"language"`
-	Matches  []Match `json:"matches"`
-}
-
-// supported languages
-type Languages struct {
-	Name     string `json:"name"`
-	Code     string `json:"code"`
-	LongCode string `json:"longCode"`
 }
