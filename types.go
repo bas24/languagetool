@@ -36,6 +36,7 @@ type Match struct {
 	Length       int           `json:"length"`
 	Context      Context       `json:"context"`
 	Rule         Rule          `json:"rule"`
+	Sentence     string        `json:"sentence"`
 }
 
 type Replacement struct {
